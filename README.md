@@ -1,49 +1,120 @@
+[vmodel]: ./images/v-model.png "v-model"
+[safetyculture]: ./images/safetyculture.tiff "safetyculture"
+
+
 # Functional Safety of a Lane Assistance System
 
+Find the here the original [README](./udacity_README.md) provided by Udacity.
 
+---
 
-Your job will be to create functional safety documents based on what you learned in the lessons. These documents are simplified versions of what a functional safety manager would create as part of a safety case. A safety case is a collection of documents proving that a project has made a vehicle safer.
+## Project Instructions
 
+Document a safety case for a lane assistance item. This would include the creation of functional safety documents based on what I've learned in the lessons.
 
-### Description of Repo Files
+The initial documents provided  are simplified versions of what a functional safety manager would create as part of a safety case. A safety case is a collection of documents proving that a project has made a vehicle safer.
 
-This repo contains all the files to complete the car nanodegree functional safety project. We are also providing the same files in a google drive folder. Here is the link to the Google Drive folder: [Link to templates](https://drive.google.com/open?id=0ByaZfGJuntGTQWRpNUpuNVVGNlU)
+More specific instructions are in [this pdf document here.](./Project_Instructions.pdf)
 
+## Key Takeaways
 
-The repo contains a PDF file called **Project_Instructions.pdf**. This document gives information about how to approach the project and what is expected. You'll also see a project template folder. There are five files in the folder. You should use these templates to develop your solution:
+### Functional Safety
 
+**Functional Safety** is the process of identifying risky situations and lowers them to acceptable levels.
 
-* 01_SafetyPlan_LaneAssistance.doc
+Safety is the absence of unreasonable risk.
 
-* 02_HazardAnalysisAndRiskAssessment.xlsx
+### ISO 26262
 
-* 03_FunctionalSafetyConcept_LaneAssistance.doc
+#### General Introduction
 
-* 04_TechnicalSafetyConcept_LaneAssistance.doc
+ISO 26262 only covers electronic and electrical malfunctions in passenger vehicle systems. The standard provides a framework for reducing risks that could harm people's health. It is interesting to note that ISO 26262 does **not** consider nominal performance as part of functional safety. 
 
-* 05_SoftwareRequirementsAndArchitecture_LaneAssistance.doc
+#### V Model
 
-You will need to fill out all five of these documents in order to meet specifications.  
+ISO 26262 uses a process model called the V model. Here is a simplified representation:
 
-The repo also contains an Architecture_Diagrams folder containing visuals that you will need to complete the reports. These visuals are in no particular order, and you will decide in which document or documents they belong.
+![alt text][vmodel]
 
+Sections of the complete V Model:
+* Management of Functional Safety
+* Concept Phase
+    * Item Definition
+    * Initiation of the safety lifecycle
+    * Hazard Analysis and Risk Assessment
+    * Function Safety Concept
+* Product Development at the System Level 
+* Product Development at the Hardware Level
+* Product Development at the Software Level
+* Product and Operations
+    * Production
+    * Operation, Service and Decommissioning
+* Supporting Processes
+* ASIL-oriented and Safety-oriented Analysis
+* Guidelines on ISO 26262
 
-### Project Rubric
-You can find the project rubric in the classroom. 
+This project is focused on the left side of the V model.
 
+## Description
 
-### Software
+### Safety Plan
 
-To complete the project, you will need a word processor and spreadsheet software.
+**[01_SafetyPlan_LaneAssistance.pdf](./01_SafetyPlan_LaneAssistance.pdf)**
 
-If you do not have word processing software on your local computer, we suggest using [Google Drive](https://drive.google.com) or [Microsoft Office in the Cloud](https://www.office.com/). Both of these services are free. 
+As part of the safety plan, I included the following major elements:
+* what system is under consideration
+* the goal of the project
+* what steps will be taken to ensure safety
+* the roles and personnel involved in the project
+* the project timeline
 
-There are also open source word processors such as [LibreOffice](https://www.libreoffice.org/]) and [OpenOffice](https://www.openoffice.org).
+The safety case would discuss what elements you added to the system in order to make it safe. And it would provide testing evidence that shows the system functioning properly. The documentation provides evidence that what you added to the system really does make the vehicle safer. Somebody who is completely independent from the functional safety team should evaluate the validity of the safety case.
 
+In the current ongoing pursue of autonomous driving, a few fatalities could not be avoided. At these occasions it is striking how we, as human, do not forgive technology when it fails us. 
 
-### Submitting
-For your project submission, please export your work into pdf files. This will ensure that reviewers can review your work no matter what word processing and spreadsheet software you used.
+Technological failures are also human failures since we are designing and implementing these systems ourselves. That is why is it of the utmost importance the promote a **Safety Culture** at the workplace.
 
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+![alt text][safetyculture]
 
+#### Development Interface Agreement (DIA)
+
+A DIA defines the roles and responsibilities between companies involved in developing a product. All involved parties need to agree on the contents of the DIA before the project begins.
+
+The DIA also specifies what evidence and work products each party will provide to prove that work was done according to the agreement.
+
+The ultimate goal is to ensure that all parties are developing safe vehicles in compliance with ISO 26262.
+
+### Hazard Anaysis and Risk Assessment
+
+**[02_HazardAnalysisAndRiskAssessment.pdf](./02_HazardAnalysisAndRiskAssessment.pdf)**
+
+### Functional Safety Concept
+
+**[03_FunctionalSafetyConcept_LaneAssistance.pdf](./03_FunctionalSafetyConcept_LaneAssistance.pdf)**
+
+The functional safety concept provides a high level overview of the system. Based on the hazard analysis and risk assessment, I detailed what the system is required to do to stay safe. I considered the system as a black box and only considered how it should behave from an exterior point of view without any knowledge of the specific implementation.
+I also identified what part of the system will need to be adjusted to take into account the new functionality.
+
+### Technical Safety Concept
+
+**[04_TechnicalSafetyConcept_LaneAssistance.pdf](./04_TechnicalSafetyConcept_LaneAssistance.pdf)**
+
+The technical safety concept is a level deeper into the details of the system. It has knowledge of how the system is implemented.
+
+### Software Requirements and Architecture
+
+**[05_SoftwareRequirementsAndArchitecture_LaneAssistance.pdf](./05_SoftwareRequirementsAndArchitecture_LaneAssistance.pdf)**
+
+## Annexes
+
+### Vocabulary
+
+A **fault** is when something inappropriate happens to the system, such as a defect or unexpected behavior.
+
+A fault can lead to a **failure**, which is synonymous with a malfunction. Failure means that the system has stopped working properly. The system is no longer doing what it is supposed to do.
+
+A failure could lead to a **hazard**. A hazard is a situation that could cause injury to a person or harm a person's health. If a system fails, the situation is potentially hazardous. Not all failures are necessarily hazardous, which means hazards have different levels of risk.
+
+**Risk** measures the level of danger in a situation. An example of a high risk situation is one that it is likely to happen and also cause serious injury.
+
+*Faults leads to failures. A failure leads to a hazard. A hazard has a certain a level of risk.*
