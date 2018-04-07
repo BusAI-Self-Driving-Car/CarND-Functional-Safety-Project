@@ -1,6 +1,10 @@
 [vmodel]: ./images/v-model.png "v-model"
 [safetyculture]: ./images/safetyculture.tiff "safetyculture"
-
+[hara]: ./images/hara.png "hara"
+[adas-archi]: ./images/adas-archi.png "adas-archi"
+[system-hierarchy]: ./images/system-hierarchy.png "system-hierarchy"
+[adas-sub-system]: ./images/adas-sub-system.png "adas-sub-system"
+[asil]: ./images/asil.jpg "asil"
 
 # Functional Safety of a Lane Assistance System
 
@@ -15,6 +19,36 @@ Document a safety case for a lane assistance item. This would include the creati
 The initial documents provided  are simplified versions of what a functional safety manager would create as part of a safety case. A safety case is a collection of documents proving that a project has made a vehicle safer.
 
 More specific instructions are in [this pdf document here.](./Project_Instructions.pdf)
+
+## Lane Assistance System
+
+### System Architecture
+
+For this project, a simplified version of a Lane Assistance System was under consideration.
+
+It has 2 functions:
+
+* **Lane Departure Warning**
+* **Lane Keeping Assistance**
+
+These system are supposed to function in the following situation:
+
+* When the driver drifts towards the edge of the lane
+
+In that situation, two things will happen:
+
+* the **Lane Departure Warning** function will vibrate the steering wheel
+* the **Lane Keeping Assistance** function will move the steering wheel so that the wheels turn towards the center of the lane
+
+Diagram of the system architecture:
+
+![alt text][adas-archi]
+
+### Sub-System Architecture
+
+If we dig down further into the power steering ECU sub-system, we divide the ECU into its hardware and software components. As we traverse down the V model, the architecture diagrams become more focused and detailed.
+
+![alt text][adas-sub-system]
 
 ## Key Takeaways
 
@@ -40,7 +74,7 @@ Sections of the complete V Model:
 * Management of Functional Safety
 * Concept Phase
     * Item Definition
-    * Initiation of the safety lifecycle
+    * Initiation of the safety life cycle
     * Hazard Analysis and Risk Assessment
     * Function Safety Concept
 * Product Development at the System Level 
@@ -88,6 +122,62 @@ The ultimate goal is to ensure that all parties are developing safe vehicles in 
 
 **[02_HazardAnalysisAndRiskAssessment.pdf](./02_HazardAnalysisAndRiskAssessment.pdf)**
 
+The ultimate goal of Hazard Analysis and Risk Assessment is to define requirements specifying what ADAS needs to do in order to avoid hazardous situations.
+
+![alt text][hara]
+
+### Situational Analysis
+
+Situational Analysis is the task of imagining hypothetical driving situations and analysis what would happen if the vehicle malfunction in each situation.
+
+During Situational Analysis, we want to focus on the most critical scenarios.
+
+I used the following predefined situation phrasing with predefined guidewords:
+
+**[Operation Mode]** on **[Operational Scenario]** during **[Environment Details]** with **[Situational Details]** and **[Item Usage]** system.
+
+The lessons took the following situation as an example:
+
+**Normal driving** on **country roads** during **normal conditions** with **high speed** and **system incorrectly used**.
+
+(The driver is misusing the lane keeping assistance function as an autonomous function.)
+
+### Hazard Identification
+
+
+### Hazardous Event Classification
+
+ISO 26262 defines a risk as follow:
+
+> **Risk** = **Severity** x **Exposure** x **Controllability**
+
+* Severity measures how badly a person could get injured in an accident.
+* Exposure is how often or how long would driver find themselves in a specific situation.
+* Controllability is how likely the drive could gain control of the vehicle during a hazardous event.
+
+Driving on a wet road for example is classified to be **E3 - Quite Often** according to the functional safety standard.
+
+### ASIL Levels
+
+ASIL stands for Automotive Safety Integrity Levels.
+
+The 5 risk levels (from least to most risky) are:
+
+* QM - Quality Management
+* ASIL A
+* ASIL B
+* ASIL C
+* ASIL D
+
+Whenever a hazardous situation is classified as QM, there is no need to apply ISO 26262. The acceptance level is low enough.
+
+![alt text][asil]
+
+Different measures for different ASILs:
+
+* For Software units with ASIL D more rigorous testing such as [MC/DC coverage](https://en.wikipedia.org/wiki/Modified_condition/decision_coverage) are highly recommended whereas ASIL B only mandates DC coverage.
+* ASIL D suggests a target for the PMHF metric failure rate of no greater than 10 dangerous, undetected failures per billion hours of operation whereas ASIL B only suggests a failure rate of no more than 100 failures per billion hours
+
 ### Functional Safety Concept
 
 **[03_FunctionalSafetyConcept_LaneAssistance.pdf](./03_FunctionalSafetyConcept_LaneAssistance.pdf)**
@@ -118,3 +208,14 @@ A failure could lead to a **hazard**. A hazard is a situation that could cause i
 **Risk** measures the level of danger in a situation. An example of a high risk situation is one that it is likely to happen and also cause serious injury.
 
 *Faults leads to failures. A failure leads to a hazard. A hazard has a certain a level of risk.*
+
+An **Item** is just a high level system in the vehicle; in this case, the item is the lane assistance system.
+
+A **System** is a set of elements that have at least:
+* a sensor
+* a controller
+* an actuator
+
+Here is a summary how ISO 26262 labels system hierarchies with typical examples for each part:
+
+![alt text][system-hierarchy]
