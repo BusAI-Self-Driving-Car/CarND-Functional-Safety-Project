@@ -5,6 +5,8 @@
 [system-hierarchy]: ./images/system-hierarchy.png "system-hierarchy"
 [adas-sub-system]: ./images/adas-sub-system.png "adas-sub-system"
 [asil]: ./images/asil.jpg "asil"
+[asil-decomp]: ./images/asil-decomp.png "asil-decomp"
+[ftti]: ./images/ftti.tiff "ftti"
 
 # Functional Safety of a Lane Assistance System
 
@@ -91,7 +93,7 @@ This project is focused on the left side of the V model.
 
 ## Description
 
-### Safety Plan
+### 1. Safety Plan
 
 **[01_SafetyPlan_LaneAssistance.pdf](./01_SafetyPlan_LaneAssistance.pdf)**
 
@@ -118,7 +120,7 @@ The DIA also specifies what evidence and work products each party will provide t
 
 The ultimate goal is to ensure that all parties are developing safe vehicles in compliance with ISO 26262.
 
-### Hazard Anaysis and Risk Assessment
+### 2. Hazard Anaysis and Risk Assessment
 
 **[02_HazardAnalysisAndRiskAssessment.pdf](./02_HazardAnalysisAndRiskAssessment.pdf)**
 
@@ -178,20 +180,47 @@ Different measures for different ASILs:
 * For Software units with ASIL D more rigorous testing such as [MC/DC coverage](https://en.wikipedia.org/wiki/Modified_condition/decision_coverage) are highly recommended whereas ASIL B only mandates DC coverage.
 * ASIL D suggests a target for the PMHF metric failure rate of no greater than 10 dangerous, undetected failures per billion hours of operation whereas ASIL B only suggests a failure rate of no more than 100 failures per billion hours
 
-### Functional Safety Concept
+### 3. Functional Safety Concept
 
 **[03_FunctionalSafetyConcept_LaneAssistance.pdf](./03_FunctionalSafetyConcept_LaneAssistance.pdf)**
 
-The functional safety concept provides a high level overview of the system. Based on the hazard analysis and risk assessment, I detailed what the system is required to do to stay safe. I considered the system as a black box and only considered how it should behave from an exterior point of view without any knowledge of the specific implementation.
-I also identified what part of the system will need to be adjusted to take into account the new functionality.
+The functional safety concept provides a high level overview of the system. Based on the hazard analysis and risk assessment, it details what the system is required to do in order to reduce risks involved by the Lane Assistance functionality to acceptable levels. It considers the system as a black box and only defines how it should behave from an exterior point of view without any knowledge of the specific implementation.
 
-### Technical Safety Concept
+Here are the few steps I followed to achieve the technical safety concept:
+
+* Derived functional safety requirements from the safety goals
+* Refined the item architecture
+* Allocated functional safety requirements to the item architecture
+* Determined ASILs for the 3 subsystems
+* Decomposition of the ASILs
+
+![alt text][asil-decomp]
+
+The 3 main attributes to each functional safety requirements were discussed ans specified:
+
+1. **Fault Tolerant Time Interval (FTTI)**
+    The FTTI for both systems is set to be 50 ms. 
+
+![alt text][ftti]
+
+2. **Warning and Degradation Concept**
+    This document defines how the driver will be alerted when the system has reduces functionality or is turned off completely.
+    It also includes how the vehicle will transition to and recover from a safe state.
+
+3. **Verification and Validation Acceptance Criteria**
+    * *Validation* is the process of ensuring that the chosen values and behaviors of the system are reasonable. In this case, we would need to validate that the torque amplitudes and frequencies of the LDW are appropriate for the driving task and suit every drivers. 
+    * *Verification* is the process of ensuring that the safety requirements are met. In this case we would need to verify that the system really does turn off whenever the LKA has been enabled for MAX_DURATION.
+
+
+### 4. Technical Safety Concept
 
 **[04_TechnicalSafetyConcept_LaneAssistance.pdf](./04_TechnicalSafetyConcept_LaneAssistance.pdf)**
 
 The technical safety concept is a level deeper into the details of the system. It has knowledge of how the system is implemented.
 
-### Software Requirements and Architecture
+**Technical safety requirements describe what a system will do when a malfunction violates a safety goal.**
+
+### 5. Software Requirements and Architecture
 
 **[05_SoftwareRequirementsAndArchitecture_LaneAssistance.pdf](./05_SoftwareRequirementsAndArchitecture_LaneAssistance.pdf)**
 
