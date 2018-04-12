@@ -7,6 +7,8 @@
 [asil]: ./images/asil.jpg "asil"
 [asil-decomp]: ./images/asil-decomp.png "asil-decomp"
 [ftti]: ./images/ftti.tiff "ftti"
+[sw-req]: ./images/sw-req.tiff "sw-req"
+
 
 # Functional Safety of a Lane Assistance System
 
@@ -91,6 +93,22 @@ Sections of the complete V Model:
 
 This project is focused on the left side of the V model.
 
+#### MISRA
+
+The Motor Industry Software Reliability Association defines guidelines around the C and C++ programming languages to extract a subnet of both that are appropriate for safety critical applications:
+* Defensive implementation techniques
+* Language subnets
+* Style guides
+* Naming Conventions
+
+#### Hardware Failure Metrics 🛠
+
+Hardware failures are inevitable.
+
+Designing a safe system is the ensure that as most hardware failures would be detected.
+
+The ASIL define the acceptance rate of random hardware failures. An ASIL D element, for example, should have fewer than one failure every 100 million hours. 
+
 ## Description
 
 ### 1. Safety Plan
@@ -120,7 +138,7 @@ The DIA also specifies what evidence and work products each party will provide t
 
 The ultimate goal is to ensure that all parties are developing safe vehicles in compliance with ISO 26262.
 
-### 2. Hazard Anaysis and Risk Assessment
+### 2. Hazard Analysis and Risk Assessment
 
 **[02_HazardAnalysisAndRiskAssessment.pdf](./02_HazardAnalysisAndRiskAssessment.pdf)**
 
@@ -223,6 +241,14 @@ The technical safety concept is a level deeper into the details of the system. I
 ### 5. Software Requirements and Architecture
 
 **[05_SoftwareRequirementsAndArchitecture_LaneAssistance.pdf](./05_SoftwareRequirementsAndArchitecture_LaneAssistance.pdf)**
+
+Most of the software safety requirements are derived from the technical safety requirements.
+
+![alt text][sw-req]
+
+The customer, internal, safety and other kinds of requirements are all part of the **same** and unique overall product architectural design. 
+
+
 
 ## Annexes
 
