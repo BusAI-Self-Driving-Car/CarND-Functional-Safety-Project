@@ -1,13 +1,13 @@
 [vmodel]: ./images/v-model.png "v-model"
-[safetyculture]: ./images/safetyculture.tiff "safetyculture"
+[safetyculture]: ./images/safetyculture.png "safetyculture"
 [hara]: ./images/hara.png "hara"
 [adas-archi]: ./images/adas-archi.png "adas-archi"
 [system-hierarchy]: ./images/system-hierarchy.png "system-hierarchy"
 [adas-sub-system]: ./images/adas-sub-system.png "adas-sub-system"
 [asil]: ./images/asil.jpg "asil"
 [asil-decomp]: ./images/asil-decomp.png "asil-decomp"
-[ftti]: ./images/ftti.tiff "ftti"
-[sw-req]: ./images/sw-req.tiff "sw-req"
+[ftti]: ./images/ftti.png "ftti"
+[sw-req]: ./images/sw-req.png "sw-req"
 
 
 # Functional Safety of a Lane Assistance System
